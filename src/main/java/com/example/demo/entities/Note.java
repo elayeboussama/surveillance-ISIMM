@@ -1,6 +1,6 @@
 package com.example.demo.entities;
 
-import com.example.demo.entities.enums.devoirTypes;
+
 import com.example.demo.entities.enums.typeDevoir;
 import jakarta.persistence.*;
 import lombok.Getter;
