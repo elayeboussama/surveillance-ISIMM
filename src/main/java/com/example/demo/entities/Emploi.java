@@ -12,7 +12,9 @@ import java.util.Set;
 
 @Entity
 @Table(name="Emploi")
-@Data
+@Getter
+@Setter
+
 public class Emploi implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,12 +31,25 @@ public class Emploi implements Serializable {
     @OneToMany(mappedBy = "emploi",fetch=FetchType.LAZY)
     private Set<Seance> seances;
 
+    public Emploi(Date dateDebut, Date dateFin, Set<Seance> seances) {
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.seances = seances;
+    }
+
+    public Emploi(Date dateDebut, Date dateFin) {
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+    }
 
     public Emploi() {
     }
 
 
-
+    public void addSeance(Seance seance) {
+        this.seances.add(seance);
+        //seance.setEmploi(this);
+    }
 
 
 }

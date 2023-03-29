@@ -57,6 +57,4 @@ public class Seance implements Serializable {
 
 
 
-
-
 }

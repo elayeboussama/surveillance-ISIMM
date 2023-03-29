@@ -40,13 +40,30 @@ public class Enseignant extends Employer  {
     public Enseignant() {
 
     }
-    public Enseignant(float NombreHeures, String NiveauEnseigné, grade gradeEnseignant , Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prénom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire) {
-        super(department, demandeConger, demandeStockable, cin, nom, prénom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
-        this.NombreHeures = NombreHeures;
 
+
+    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, grade gradeEnseignant) {
+        super(department, demandeConger, demandeStockable, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+        this.voeux = voeux;
+        this.enseignantMatiere = enseignantMatiere;
+        this.notes = notes;
+        this.NombreHeures = nombreHeures;
         this.gradeEnseignant = gradeEnseignant;
     }
 
+    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, float nombreHeures, grade gradeEnseignant) {
+        super(department, demandeConger, demandeStockable, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+        this.NombreHeures = nombreHeures;
+        this.gradeEnseignant = gradeEnseignant;
+    }
+
+    public Enseignant(Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, grade gradeEnseignant) {
+        this.voeux = voeux;
+        this.enseignantMatiere = enseignantMatiere;
+        this.notes = notes;
+        this.NombreHeures = nombreHeures;
+        this.gradeEnseignant = gradeEnseignant;
+    }
 
     public Set<Voeux> getVoeux() {
         return voeux;
@@ -66,6 +83,21 @@ public class Enseignant extends Employer  {
     }
 
 
+
+    public void addVoeux(Voeux voeux) {
+        this.voeux.add(voeux);
+        //voeux.setEnseignant(this);
+    }
+
+    public void addEnseignantMatiere(EnseignantMatiere enseignantMatiere) {
+        this.enseignantMatiere.add(enseignantMatiere);
+        //enseignantMatiere.setEnseignant(this);
+    }
+
+    public void addNote(Note note) {
+        this.notes.add(note);
+        //note.setEnseignant(this);
+    }
 
 
 }
