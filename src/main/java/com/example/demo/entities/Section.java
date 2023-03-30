@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,11 +24,12 @@ public class Section implements Serializable {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="semestre")
+    @JoinColumn(name="id_semestre")
     @JsonBackReference
     private Semestre semestre;
 
     @OneToMany(mappedBy = "section", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<TD> tds;
 
 

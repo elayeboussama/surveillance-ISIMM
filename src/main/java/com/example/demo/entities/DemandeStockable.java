@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,14 +25,15 @@ public class DemandeStockable implements Serializable {
     @Column(length = 100)
     private String etat;
 
+    @JsonBackReference
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_employer" )
     private Employer employer;
-
+    @JsonBackReference
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_service")
     private Service service;
-
+    @JsonBackReference
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="id_magasin")
     private Magasin magasin;
