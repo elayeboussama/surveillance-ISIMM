@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import com.example.demo.entities.enums.Grade;
 import com.example.demo.entities.enums.Sexe;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,12 +23,14 @@ public class Enseignant extends Employer  {
 //    private Long idEnseignant;
 
     @OneToMany(mappedBy="enseignant",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Voeux> voeux;
 
     private Set<EnseignantMatiere> enseignantMatiere = new HashSet<EnseignantMatiere>();
 
 
     @OneToMany(mappedBy = "enseingant",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Note> notes;
 
 
@@ -72,13 +75,7 @@ public class Enseignant extends Employer  {
         this.gradeEnseignant = gradeEnseignant;
     }
 
-    public Enseignant(Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, Grade gradeEnseignant) {
-        this.voeux = voeux;
-        this.enseignantMatiere = enseignantMatiere;
-        this.notes = notes;
-        this.NombreHeures = nombreHeures;
-        this.gradeEnseignant = gradeEnseignant;
-    }
+
 
     public Set<Voeux> getVoeux() {
         return voeux;
@@ -89,6 +86,7 @@ public class Enseignant extends Employer  {
     }
 
     @OneToMany(mappedBy = "enseignant")
+    @JsonManagedReference
     public Set<EnseignantMatiere> getEnseignantMatiere() {
         return enseignantMatiere;
     }

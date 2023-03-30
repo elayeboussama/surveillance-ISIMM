@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,12 +23,13 @@ public class Niveau implements Serializable {
     @Column(length = 100)
     private String name;
 
-
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="myDiplome")
     private Diplome diplome;
 
     @OneToMany(mappedBy = "niveau",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Semestre> semestres;
 
 

@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,10 +29,12 @@ public class Department implements Serializable {
     private Employer ChefDepartement;
 
     @OneToMany(mappedBy = "department",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Employer> employers;
 
 
     @OneToMany(mappedBy = "department",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Enseignant> enseignants;
 
     public Department() {

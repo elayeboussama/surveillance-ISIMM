@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,10 +28,12 @@ public class Service implements Serializable {
 
 
     @OneToMany(mappedBy = "service",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<DemandeStockable> demandeStockable;
 
 
     @OneToMany(mappedBy = "service",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Stockable> stockables;
 
     public Service() {

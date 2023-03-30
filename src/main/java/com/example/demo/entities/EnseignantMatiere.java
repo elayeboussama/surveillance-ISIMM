@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import com.example.demo.entities.enums.Groups;
 import com.example.demo.entities.enums.Session;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,13 +39,13 @@ public class EnseignantMatiere implements Serializable {
     public EnseignantMatiere() {
 
     }
-
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_Enseignant")
     public Enseignant getEnseignant() {
         return enseignant;
     }
-
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     public Matiere getMatiere() {

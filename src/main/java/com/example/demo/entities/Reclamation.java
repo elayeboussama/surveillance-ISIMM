@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import com.example.demo.entities.enums.TypeDevoir;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +19,7 @@ public class Reclamation implements Serializable {
     @GeneratedValue
     @Column(name = "id_reclamation", nullable = false)
     private Long idReclamation;
-
+    @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_etudiant", nullable = false)
     private Etudiant etudiant;
