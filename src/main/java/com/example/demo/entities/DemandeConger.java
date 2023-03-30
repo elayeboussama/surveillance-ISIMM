@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import com.example.demo.entities.enums.Cause;
 import com.example.demo.entities.enums.Etat;
 import com.example.demo.entities.enums.TypeCongé;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +26,7 @@ public class DemandeConger implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_employer")
+    @JsonBackReference
     private Employer employer;
 
 

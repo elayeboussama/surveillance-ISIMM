@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,8 +24,10 @@ public class TP implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "tp", fetch = FetchType.LAZY)
-    private Set<Etudiant> etudiants= new HashSet<Etudiant>();
+    @JsonManagedReference
+    private Set<Etudiant> etudiants ;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     @JoinColumn(name="tps")
     private TD td;
 

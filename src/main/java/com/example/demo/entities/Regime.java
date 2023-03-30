@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,6 +40,7 @@ public class Regime implements Serializable {
 
 
     @OneToMany(mappedBy = "regime",fetch=FetchType.LAZY)
+    @JsonManagedReference
     public Set<Matiere> matieres;
 
 

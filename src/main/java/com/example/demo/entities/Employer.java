@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
 import com.example.demo.entities.enums.Sexe;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,15 +35,17 @@ public class Employer  extends Personne {
 
     @ManyToMany
     private Set<Service> services;
-
+    @JsonBackReference
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="department")
     private Department department;
 
     @OneToMany(mappedBy = "employer",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<DemandeConger> demandeConger;
 
     @OneToMany(mappedBy = "employer",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<DemandeStockable> demandeStockable;
 
 

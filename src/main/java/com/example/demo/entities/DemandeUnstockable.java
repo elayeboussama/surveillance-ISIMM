@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class DemandeUnstockable implements Serializable {
 
 
     @OneToMany(mappedBy = "demandeUnstockable",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Stockable> stockables;
 
     public DemandeUnstockable() {
