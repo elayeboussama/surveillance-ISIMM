@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -19,6 +20,7 @@ public class Diplome implements Serializable {
 
 
     @OneToMany(mappedBy="diplome",fetch=FetchType.LAZY)
+    @JsonManagedReference
     private Set<Niveau> niveau;
 
 

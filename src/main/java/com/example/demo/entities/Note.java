@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 
 import com.example.demo.entities.enums.TypeDevoir;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,15 +20,15 @@ public class Note implements Serializable {
     @Column(name = "id_note", nullable = false)
     private Long idNote;
 
-
+    @JsonBackReference
     @ManyToOne()
     @JoinColumn(name="id_matiere")
     private Matiere matiere;
-
+    @JsonBackReference
     @ManyToOne()
     @JoinColumn(name="id_etudiant")
     private Etudiant etudiant;
-
+    @JsonBackReference
     @ManyToOne()
     @JoinColumn(name="id_enseingant")
     private Enseignant enseingant;

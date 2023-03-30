@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import com.example.demo.entities.enums.TypeSeance;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,7 +30,7 @@ public class Seance implements Serializable {
 
     @ManyToOne(fetch=FetchType.LAZY)
     private Emploi emploi;
-
+    @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY)
     private Salle salle;
 
