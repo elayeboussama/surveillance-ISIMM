@@ -1,11 +1,11 @@
 package com.example.demo.entities;
 
-import com.example.demo.entities.enums.grade;
+import com.example.demo.entities.enums.Grade;
+import com.example.demo.entities.enums.Sexe;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,7 +34,7 @@ public class Enseignant extends Employer  {
 
     private float NombreHeures;
 
-    private grade gradeEnseignant ;
+    private Grade gradeEnseignant ;
 
 
     public Enseignant() {
@@ -42,8 +42,8 @@ public class Enseignant extends Employer  {
     }
 
 
-    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, grade gradeEnseignant) {
-        super(department, demandeConger, demandeStockable, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable,Set<Service> services, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, Grade gradeEnseignant) {
+        super(department, demandeConger, demandeStockable, services, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
         this.voeux = voeux;
         this.enseignantMatiere = enseignantMatiere;
         this.notes = notes;
@@ -51,13 +51,28 @@ public class Enseignant extends Employer  {
         this.gradeEnseignant = gradeEnseignant;
     }
 
-    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, float nombreHeures, grade gradeEnseignant) {
-        super(department, demandeConger, demandeStockable, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+    public Enseignant(Department department, Set<DemandeConger> demandeConger, Set<DemandeStockable> demandeStockable,Set<Service> services, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, float nombreHeures, Grade gradeEnseignant) {
+        super(department, demandeConger, demandeStockable,services, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
         this.NombreHeures = nombreHeures;
         this.gradeEnseignant = gradeEnseignant;
     }
 
-    public Enseignant(Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, grade gradeEnseignant) {
+    public Enseignant(Department department, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, Grade gradeEnseignant) {
+        super(department, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+        this.voeux = voeux;
+        this.enseignantMatiere = enseignantMatiere;
+        this.notes = notes;
+        this.NombreHeures = nombreHeures;
+        this.gradeEnseignant = gradeEnseignant;
+    }
+
+    public Enseignant(Department department, String cin, String nom, String prenom, Date naissance, Sexe sexe, String adresse, String password, String email, String telephone, int age, Date DateEmbauche, int NbJourCongeTotale, int NbJourCongeRestant, float Salaire, float nombreHeures, Grade gradeEnseignant) {
+        super(department, cin, nom, prenom, naissance, sexe, adresse, password, email, telephone, age, DateEmbauche, NbJourCongeTotale, NbJourCongeRestant, Salaire);
+        this.NombreHeures = nombreHeures;
+        this.gradeEnseignant = gradeEnseignant;
+    }
+
+    public Enseignant(Set<Voeux> voeux, Set<EnseignantMatiere> enseignantMatiere, Set<Note> notes, float nombreHeures, Grade gradeEnseignant) {
         this.voeux = voeux;
         this.enseignantMatiere = enseignantMatiere;
         this.notes = notes;

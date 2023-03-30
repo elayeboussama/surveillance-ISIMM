@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -28,10 +29,24 @@ public class TD implements Serializable {
     private Set<TP> tps;
 
     @OneToMany(mappedBy = "td", fetch = FetchType.LAZY)
-    private Set<Etudiant> etudiants;
+    private Set<Etudiant> etudiants= new HashSet<Etudiant>();
 
     public TD() {
 
+    }
+
+    public TD(String name, Section section, Set<TP> tps, Set<Etudiant> etudiants) {
+        this.name = name;
+        this.section = section;
+        this.tps = tps;
+        this.etudiants = etudiants;
+    }
+
+    public TD(String name, Section section ) {
+        this.name = name;
+        this.section = section;
+        this.tps = new HashSet<>();
+        this.etudiants = new HashSet<>();
     }
 
     public TD(String name, Section section, Set<TP> tps) {
@@ -40,30 +55,11 @@ public class TD implements Serializable {
         this.tps = tps;
     }
 
-    public String getName() {
-        return name;
+    public void addTp(TP tp) {
+        this.tps.add(tp);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Section getSection() {
-        return section;
-    }
-
-    public void setSection(Section section) {
-        this.section = section;
-    }
-
-    public Set<TP> getTps() {
-        return tps;
-    }
-
-    public void setTps(Set<TP> tps) {
-        this.tps = tps;
+    public void addEtudiant(Etudiant etudiant) {
+        this.etudiants.add(etudiant);
     }
 }
-//Constructors
-
-//Getters and Setters

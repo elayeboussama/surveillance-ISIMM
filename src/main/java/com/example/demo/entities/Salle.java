@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -33,6 +34,8 @@ public class Salle implements Serializable {
 
     public Salle(Boolean disponibilité ) {
         this.disponibilité = disponibilité;
+        this.seances = new HashSet<>();
+
     }
 
     public Salle() {

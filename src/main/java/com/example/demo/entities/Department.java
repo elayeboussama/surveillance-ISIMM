@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -37,14 +38,32 @@ public class Department implements Serializable {
 
     }
 
-    public Department(String name, Set<Employer> employers ) {
+    public Department(String name) {
+        this.name = name;
+        this.enseignants  = new HashSet<>();
+        this.employers = new HashSet<>();
+
+    }
+
+    public Department(String name, Set<Employer> employers, Set<Enseignant> enseignants ) {
         this.name = name;
         this.employers = employers;
+        this.enseignants  = enseignants;
+    }
 
+    public Department(String name, Set<Employer> employers  ) {
+        this.name = name;
+        this.employers = employers;
     }
 
     public void addEmployer(Employer employer) {
         this.employers.add(employer);
 
     }
+
+    public void addEnseignant(Enseignant enseignant) {
+        this.enseignants.add(enseignant);
+
+    }
+
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -40,6 +41,12 @@ public class Magasin implements Serializable {
         this.stockables = stockables;
     }
 
+    public Magasin(String name) {
+        this.name = name;
+        this.demandeStockables = new HashSet<>();
+        this.stockables = new HashSet<>();
+    }
+
     public Set<DemandeStockable> getDemandeStockables() {
         return demandeStockables;
     }
@@ -66,6 +73,14 @@ public class Magasin implements Serializable {
 
 
     public boolean confirmer(DemandeStockable ds){ return true;}
+
+    public void addStockable(Stockable stockable) {
+        this.stockables.add(stockable);
+    }
+
+    public void addDemandeStockable(DemandeStockable demandeStockables) {
+        this.demandeStockables.add(demandeStockables);
+    }
 
 
 }

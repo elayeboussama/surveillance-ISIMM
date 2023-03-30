@@ -1,14 +1,13 @@
 package com.example.demo.entities;
 
 
-import com.example.demo.entities.enums.typeDevoir;
+import com.example.demo.entities.enums.TypeDevoir;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -35,7 +34,7 @@ public class Note implements Serializable {
 
 
     @Column
-    private typeDevoir type;
+    private TypeDevoir type;
 
 private float note;
 private Date date;
@@ -43,7 +42,7 @@ private Date date;
 
     }
 
-    public Note(Matiere matiere, Etudiant etudiant, Enseignant enseingant, typeDevoir type, float note, Date date) {
+    public Note(Matiere matiere, Etudiant etudiant, Enseignant enseingant, TypeDevoir type, float note, Date date) {
 
         this.matiere = matiere;
         this.etudiant = etudiant;
