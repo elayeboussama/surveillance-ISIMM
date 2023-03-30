@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -46,6 +47,11 @@ public class Niveau implements Serializable {
         this.semestres = semestres;
     }
 
+    public Niveau(String name) {
+        this.name = name;
+        this.semestres = new HashSet<>();
+    }
+
     public String getName() {
         return name;
     }
@@ -54,24 +60,9 @@ public class Niveau implements Serializable {
         this.name = name;
     }
 
-    public Set<Semestre> getSemestres() {
-        return semestres;
-    }
 
-    public void setSemestres(Set<Semestre> semestres) {
-        this.semestres = semestres;
-    }
-
-
-
-    public Diplome getDiplome() {
-        return diplome;
-    }
-
-    public void setDiplome(Diplome diplome) {
-        this.diplome = diplome;
+    public void addSemestre(Semestre semestre) {
+        this.semestres.add(semestre);
     }
 }
-//Constructors
 
-//Getters and Setters

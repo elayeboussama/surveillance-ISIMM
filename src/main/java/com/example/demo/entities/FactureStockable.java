@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -26,12 +27,11 @@ public class FactureStockable implements Serializable {
     @Column
     private float tva;
 
-    public FactureStockable() {
-    }
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_demande_unstockable")
-    private DemandeUnstockable Stocka;
+    private DemandeUnstockable demandeUnstockable;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_magasin" )
@@ -44,55 +44,30 @@ public class FactureStockable implements Serializable {
     @ManyToMany
     Set<Facture> factures ;
 
-    public FactureStockable(int quantite, float prix, float tva, DemandeUnstockable stocka, Magasin magasin, Service service, Set<Facture> factures) {
+    public FactureStockable() {
+    }
+
+    public FactureStockable(int quantite, float prix, float tva, DemandeUnstockable demandeUnstockable, Magasin magasin, Service service, Set<Facture> factures) {
         this.quantite = quantite;
         this.prix = prix;
         this.tva = tva;
-        Stocka = stocka;
+        this.demandeUnstockable = demandeUnstockable;
         this.magasin = magasin;
         this.service = service;
         this.factures = factures;
     }
 
-    public int getQuantite() {
-        return quantite;
-    }
-
-    public void setQuantite(int quantite) {
+    public FactureStockable(int quantite, float prix, float tva, DemandeUnstockable demandeUnstockable, Magasin magasin, Service service ) {
         this.quantite = quantite;
-    }
-
-    public float getPrix() {
-        return prix;
-    }
-
-    public void setPrix(float prix) {
         this.prix = prix;
-    }
-
-    public float getTva() {
-        return tva;
-    }
-
-    public void setTva(float tva) {
         this.tva = tva;
-    }
-
-    public DemandeUnstockable getStocka() {
-        return Stocka;
-    }
-
-    public void setStocka(DemandeUnstockable stocka) {
-        Stocka = stocka;
-    }
-
-    public Magasin getMagasin() {
-        return magasin;
-    }
-
-    public void setMagasin(Magasin magasin) {
+        this.demandeUnstockable = demandeUnstockable;
         this.magasin = magasin;
+        this.service = service;
+        this.factures  = new HashSet<>();
     }
+
+
 
     public Service getService() {
         return service;
@@ -102,14 +77,10 @@ public class FactureStockable implements Serializable {
         this.service = service;
     }
 
-    public Set<Facture> getFactures() {
-        return factures;
+
+    public void addFacture(Facture facture) {
+        this.factures.add(facture);
     }
 
-    public void setFactures(Set<Facture> factures) {
-        this.factures = factures;
-    }
 }
-//Constructors
 
-//Getters and Setters

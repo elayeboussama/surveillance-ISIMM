@@ -19,10 +19,11 @@ public class Voeux implements Serializable {
     @Column(length = 100)
     private String name;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_SA")
-    private StaffAdministratif SA;
+    @Column(length = 100)
+    private String message;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="id_SA")
+//    private StaffAdministratif SA;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_enseignant")
     private Enseignant enseignant;
@@ -33,27 +34,12 @@ public class Voeux implements Serializable {
 
     }
 
-    public Voeux(String name, Enseignant enseignant) {
+    public Voeux(String name,String message, Enseignant enseignant) {
         this.name = name;
+        this.message = message;
         this.enseignant = enseignant;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Enseignant getEnseignant() {
-        return enseignant;
-    }
-
-    public void setEnseignant(Enseignant enseignant) {
-        this.enseignant = enseignant;
-    }
 }
-//Constructors
 
-//Getters and Setters

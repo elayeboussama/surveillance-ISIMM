@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -33,35 +34,29 @@ public class Unite implements Serializable {
 
     private float credit;
 
-
-    public Unite(String name, Set<Matiere> matieres, Set<Semestre> semestres) {
+    public Unite(String name, Set<Semestre> semestres, Set<Matiere> matieres, float coef, float credit) {
         this.name = name;
-        this.matieres = matieres;
         this.semestres = semestres;
+        this.matieres = matieres;
+        this.coef = coef;
+        this.credit = credit;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Unite(String name, float coef, float credit) {
         this.name = name;
+        this.semestres = new HashSet<>();
+        this.matieres = new HashSet<>();
+        this.coef = coef;
+        this.credit = credit;
+    }
+    
+
+    public void addMatiere(Matiere matiere) {
+        this.matieres.add(matiere);
     }
 
-    public Set<Matiere> getMatieres() {
-        return matieres;
-    }
-
-    public void setMatieres(Set<Matiere> matieres) {
-        this.matieres = matieres;
-    }
-
-    public Set<Semestre> getSemestres() {
-        return semestres;
-    }
-
-    public void setSemestres(Set<Semestre> semestres) {
-        this.semestres = semestres;
+    public void addSemestre(Semestre semestre) {
+        this.semestres.add(semestre);
     }
 }
 //Constructors

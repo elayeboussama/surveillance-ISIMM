@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -44,40 +45,24 @@ public class Service implements Serializable {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Service(String name) {
         this.name = name;
+        this.employers = new HashSet<>();
+        this.stockables = new HashSet<>();
+        this.demandeStockable = new HashSet<>();
+
     }
 
-    public Set<Employer> getEmployers() {
-        return employers;
+    public void addEmployers(Employer employer) {
+        this.employers.add(employer);
     }
-
-    public void setEmployers(Set<Employer> employers) {
-        this.employers = employers;
+    public void addStockable(Stockable stockable) {
+        this.stockables.add(stockable);
     }
-
-    public Set<DemandeStockable> getDemandeStockable() {
-        return demandeStockable;
-    }
-
-    public void setDemandeStockable(Set<DemandeStockable> demandeStockable) {
-        this.demandeStockable = demandeStockable;
-    }
-
-    public Set<Stockable> getStockables() {
-        return stockables;
-    }
-
-    public void setStockables(Set<Stockable> stockables) {
-        this.stockables = stockables;
+    public void addDemandeStockable(DemandeStockable demandeStockable) {
+        this.demandeStockable.add(demandeStockable);
     }
 
     public boolean confirmer(DemandeStockable ds){ return true;}
 }
-//Constructors
 
-//Getters and Setters

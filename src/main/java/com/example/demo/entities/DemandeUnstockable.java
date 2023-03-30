@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,9 +32,16 @@ public class DemandeUnstockable implements Serializable {
     public DemandeUnstockable() {
 
     }
+    public DemandeUnstockable(int quantite, DemandeStockable demandeStockable) {
+        this.quantite = quantite;
+        this.demandeStockable = demandeStockable;
+        this.stockables  = new HashSet<>();
+    }
+
     public DemandeUnstockable(int quantite, DemandeStockable demandeStockable, Set<Stockable> stockables) {
         this.quantite = quantite;
         this.demandeStockable = demandeStockable;
+        this.stockables  = stockables;
     }
 
     public void addStockable(Stockable stockable) {
