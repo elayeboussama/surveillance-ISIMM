@@ -18,7 +18,7 @@ public class EnseignantController {
     private EnseignantRepository enseignantRepository;
 
     @GetMapping(path="/all")
-    public @ResponseBody List<Enseignant> findAllUsers() {
+    public @ResponseBody List<Enseignant> findAllEnsignant() {
 
         return enseignantRepository.findAll();
     }

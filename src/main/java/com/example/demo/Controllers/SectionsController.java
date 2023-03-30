@@ -18,7 +18,7 @@ public class SectionsController {
     private SectionRepository sectionRepository;
 
     @GetMapping
-    public List<Section> findAllUsers() {
+    public List<Section> findAllSections() {
         return sectionRepository.findAll();
     }
 
