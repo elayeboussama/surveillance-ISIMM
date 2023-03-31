@@ -16,5 +16,4 @@ public class MatiereController {
     public List<Matiere> getMatieresByEnseignant(@PathVariable(value="id") Long enseignantId) {
         return enseignantMatiereRepository.findByEnseignantId(enseignantId);
     }*/
-
 }
