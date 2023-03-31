@@ -30,6 +30,7 @@ public class Matiere implements Serializable {
     private float credit;
 
     private int coeffCr;
+    private float coeff;
     private int coeffTd;
     private int coeffTp;
     private int coeffCri;
@@ -60,6 +61,8 @@ public class Matiere implements Serializable {
     @JsonManagedReference
     private Set<Note> notes;
 
+    @OneToMany(mappedBy = "matiere")
+    @JsonManagedReference
     private Set<EnseignantMatiere> enseignantMatiere ;
 
     public Matiere() {
@@ -67,10 +70,11 @@ public class Matiere implements Serializable {
     }
 
 
-    public Matiere(String name, float credit, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int code, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Regime regime, Unite unite, Set<Note> notes, Set<EnseignantMatiere> enseignantMatiere) {
+    public Matiere(String name, float credit, float coeff, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int code, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Regime regime, Unite unite, Set<Note> notes, Set<EnseignantMatiere> enseignantMatiere) {
         this.name = name;
         this.credit = credit;
         this.coeffCr = coeffCr;
+        this.coeff = coeff;
         this.coeffTd = coeffTd;
         this.coeffTp = coeffTp;
         this.coeffCri = coeffCri;
@@ -88,9 +92,11 @@ public class Matiere implements Serializable {
     }
 
 
-    public Matiere(String name, float credit, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int code, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Regime regime, Unite unite ) {
+    public Matiere(String name, float credit, float coeff, int coeffCr, int coeffTd, int coeffTp, int coeffCri, int coeffNp, int code, int nbHCr, int nbHTd, int nbHTp, int nbHCri, int nbHNp, Regime regime, Unite unite ) {
         this.name = name;
         this.credit = credit;
+        this.coeff = coeff;
+
         this.coeffCr = coeffCr;
         this.coeffTd = coeffTd;
         this.coeffTp = coeffTp;
@@ -115,8 +121,7 @@ public class Matiere implements Serializable {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "matiere")
-    @JsonManagedReference
+
     public Set<EnseignantMatiere> getEnseignantMatiere() {
         return enseignantMatiere;
     }

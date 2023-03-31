@@ -1,12 +1,18 @@
 package com.example.demo;
 
+<<<<<<< HEAD
 import com.example.demo.Doa.*;
+=======
+>>>>>>> 4749e844b08259541ce26d400b6308424ad5a83f
 import com.example.demo.entities.*;
 import com.example.demo.entities.enums.Grade;
 import com.example.demo.entities.enums.Groups;
 import com.example.demo.entities.enums.Session;
 import com.example.demo.entities.enums.Sexe;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4749e844b08259541ce26d400b6308424ad5a83f
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -68,6 +74,7 @@ public class DemoApplication {
 		EnseignantMatiere enseignantMatiere = new EnseignantMatiere(enseignant, matiere, Session.TP, Groups.TP, 1L);
 
 		enseignantMatiereRepository.save(enseignantMatiere);
+
 
 	}
 
