@@ -60,7 +60,7 @@ public class TestController {
 
 
 
-        Regime myRegime = new Regime("Mon régime", 2, 3, 4, 5, 6, 10, 12, 8, 6, 4);
+        Regime myRegime = new Regime("Mon régime", 2, 6, 10, 12, 8, 6);
         Unite myUnite = new Unite(514,"Programmation Orientée Objet", 1.5f, 4.0f);
         regimeRepository.save(myRegime);
         uniteRepository.save(myUnite);
