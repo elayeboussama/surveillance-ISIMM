@@ -35,9 +35,10 @@ public class Enseignant extends Employer  {
     private Set<Note> notes;
 
 
-
+    @Column
     private float NombreHeures;
 
+    @Column
     private Grade gradeEnseignant ;
 
 
