@@ -57,7 +57,7 @@ public class EnseignantController {
 
 
 
-        Regime r = new Regime("math",1,1,1,1,512,10,10,10,0,0);
+        Regime r = new Regime("math",1,512,10,10,10,0);
 
 
         Unite u = new Unite(142,"maths",6,7);

@@ -32,7 +32,6 @@ public class EnseignantMatiere implements Serializable {
     @Column
     private Session session;
     @Column
-
     private Groups groupType;
     @Column
     private Long groupId;
