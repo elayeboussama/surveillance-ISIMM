@@ -69,15 +69,18 @@ public class EnseignantController {
 
         enseignantRepository.save(ens); // lenna a3maltelhom save fel bd
         enseignantRepository.save(ens2);
+        Matiere mtt = new Matiere("alg",3.5f,1.5f,1,1,1,1,1,512,10,10,10,0,0,r,u);
 
         //
         System.out.println("--------------------ens1------------------------"+ens.getId());
         System.out.println("--------------------ens2------------------------"+ens.getId());
         EnseignantMatiere es = new EnseignantMatiere(ens2,mt, Session.CR, Groups.SECTION,Long.parseLong("1"));
         EnseignantMatiere es2 = new EnseignantMatiere(ens,mt, Session.CR, Groups.SECTION,Long.parseLong("2"));
-lmochkol lenna 9a3ed issir ki n7ot ens w ens2 f deux instance mo5talfa fel ensefihgenantMatiere yet7attou bnafs l id hhh
+        EnseignantMatiere ess = new EnseignantMatiere(ens,mtt, Session.CR, Groups.SECTION,Long.parseLong("2"));
+
         mt.addEnseignantMatiere(es);
-        ens.addEnseignantMatiere(es);
+        mtt.addEnseignantMatiere(ess);
+        ens.addEnseignantMatiere(ess);
 
         departementRepository.save(dp);
         enseignantRepository.save(ens);
@@ -85,8 +88,10 @@ lmochkol lenna 9a3ed issir ki n7ot ens w ens2 f deux instance mo5talfa fel ensef
         uniteRepository.save(u);
         regimeRepository.save(r);
         matiereRepository.save(mt);
+        matiereRepository.save(mtt);
         enseignantMatiereRepository.save(es);
         enseignantMatiereRepository.save(es2);
+        enseignantMatiereRepository.save(ess);
 
 
     }
