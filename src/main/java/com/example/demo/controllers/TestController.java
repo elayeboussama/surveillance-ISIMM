@@ -31,7 +31,7 @@ public class TestController {
 
     @PostMapping(path="/all")
     public @ResponseBody void findAllEnsignant() {
-
+/*
 
         Department departement = new Department("Informatique");
         departementRepository.save(departement);
@@ -70,7 +70,7 @@ public class TestController {
         matiereRepository.save(matiere);
         EnseignantMatiere enseignantMatiere = new EnseignantMatiere(enseignant, matiere, Session.TP, Groups.TP, 1L);
 
-        enseignantMatiereRepository.save(enseignantMatiere);
+        enseignantMatiereRepository.save(enseignantMatiere);*/
 
 
 

@@ -51,7 +51,7 @@ public class EnseignantController {
         Department dp = new Department("ing");
 
 //deux instance mo5talfin
-
+/*
         Enseignant ens = new Enseignant(dp,"14020269","elayeb", "oussama",java.sql.Date.valueOf("2000-12-25"), Sexe.HOMME,"Moknine","Oussama.123", "elayeb.oussama2020@gmail.com","53273102",23,java.sql.Date.valueOf("2020-09-12"),45,45,1200,18, Grade.ASSISTANT);
         Enseignant ens2 = new Enseignant(dp,"14020269","elayeb", "oussama",java.sql.Date.valueOf("2000-12-25"), Sexe.HOMME,"Moknine","Oussama.123", "elayeb.oussama2020@gmail.com","53273102",23,java.sql.Date.valueOf("2020-09-12"),45,45,1200,18, Grade.ASSISTANT);
 
@@ -91,7 +91,7 @@ public class EnseignantController {
         matiereRepository.save(mtt);
         enseignantMatiereRepository.save(es);
         enseignantMatiereRepository.save(es2);
-        enseignantMatiereRepository.save(ess);
+        enseignantMatiereRepository.save(ess);*/
 
 
     }
