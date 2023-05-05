@@ -64,7 +64,7 @@ public class EnseignantController {
 
 
 
-        Matiere mt = new Matiere("math",3.5f,1.5f,1,1,1,1,1,512,10,10,10,0,0,r,u);
+        Matiere mt = new Matiere("math",3.5f,1.5f,1,1,1,1,512,10,10,10,0,0,r,u);
         departementRepository.save(dp);
 
         enseignantRepository.save(ens); // lenna a3maltelhom save fel bd

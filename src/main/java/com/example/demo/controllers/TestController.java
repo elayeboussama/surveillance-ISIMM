@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/test")
@@ -66,7 +65,7 @@ public class TestController {
         uniteRepository.save(myUnite);
 
         // bhi la74a bark
-        Matiere matiere = new Matiere("c",6.0f, 1, 2, 2, 1, 1, 123456, 30, 45, 30, 15, 0,0,myRegime, myUnite);
+        Matiere matiere = new Matiere("c",6.0f, 1, 2, 1, 1, 123456, 30, 45, 30, 15, 0,0,myRegime, myUnite);
         matiereRepository.save(matiere);
         EnseignantMatiere enseignantMatiere = new EnseignantMatiere(enseignant, matiere, Session.TP, Groups.TP, 1L);
 
