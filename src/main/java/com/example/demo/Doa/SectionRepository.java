@@ -9,16 +9,4 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface SectionRepository extends JpaRepository<Section, Long> {
-
-
-
-
-<<<<<<< Updated upstream
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 }
