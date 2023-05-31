@@ -1,4 +1,5 @@
-package com.example.demo.controllers;
+package com.example.demo.gestionSurveillance.enseignant;
+
 
 import com.example.demo.Doa.*;
 import com.example.demo.entities.*;
@@ -6,14 +7,30 @@ import com.example.demo.entities.enums.Grade;
 import com.example.demo.entities.enums.Groups;
 import com.example.demo.entities.enums.Session;
 import com.example.demo.entities.enums.Sexe;
+import com.example.demo.gestionSurveillance.emploi.dto.EmploiRequestForGenerating;
+import com.example.demo.gestionSurveillance.emploi.dto.ReqMatiere;
+import com.example.demo.gestionSurveillance.emploi.dto.Section;
+import com.example.demo.gestionSurveillance.enseignant.dto.EnseignantDTORequest;
+import com.example.demo.gestionSurveillance.enseignant.dto.EnseignantDTOResponse;
+import lombok.RequiredArgsConstructor;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.*;
 
-@RestController
-@RequestMapping("/api/enseignant")
-public class EnseignantController {
+import static com.example.demo.gestionSurveillance.enseignant.dto.mapper.EnseignantMappers.mapEnseignantToDTORequest;
+import static com.example.demo.gestionSurveillance.enseignant.dto.mapper.EnseignantMappers.mapEnseignantToDTOResponse;
+
+@Service
+@RequiredArgsConstructor
+public class SurveillanceEnseignantService {
+
     @Autowired
     private DepartementRepository departementRepository;
     @Autowired
@@ -27,27 +44,46 @@ public class EnseignantController {
     @Autowired
     private EnseignantMatiereRepository enseignantMatiereRepository;
 
-
-    @GetMapping(path="/all")
-    public @ResponseBody List<Enseignant> findAllEnsignant() {
-        System.out.println("hello");
-        return enseignantRepository.findAll();
+   public List<EnseignantDTOResponse> findAllEnsignantService(){
+       List<Enseignant> enseignants = enseignantRepository.findAll();;
 
 
-    }
+       List<EnseignantDTOResponse> enseignantDTOResponses = new ArrayList<>() ;
+       for (Enseignant enseignant : enseignants) {
+           EnseignantDTOResponse enseignantDTOResponse = mapEnseignantToDTOResponse(enseignant);
+           enseignantDTOResponses.add(enseignantDTOResponse);
+       }
+       return enseignantDTOResponses;
+   }
 
-    @GetMapping(path="/ens")
-    public @ResponseBody List<EnseignantMatiere> findAllEnseignantMatiere() {
-
+    public List<EnseignantMatiere> findAllEnseignantMatiereService(){
         return enseignantMatiereRepository.findAll();
-
-
     }
 
+   public void insertEnseignantService(EnseignantDTORequest enseignantRequest){
+       System.out.println("ccccccccccccccccccccc");
 
-    @PostMapping(path="/insert")
-    public @ResponseBody void insert() {
+       Enseignant enseignant = mapEnseignantToDTORequest(enseignantRequest, departementRepository);
+       enseignantRepository.save(enseignant);
+   }
 
+
+
+   public ResponseEntity<String> deleteEnseignantService(Long id){
+       Optional<Enseignant> enseignants  = enseignantRepository.findById(id);
+
+       if (enseignants.isPresent()) {
+           Enseignant enseignant = enseignants.get();
+           enseignantRepository.delete(enseignant);
+           return ResponseEntity.ok("enseignant with ID " + id + " deleted successfully");
+       } else {
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("enseignant with ID " + id + " not found");
+       }
+   }
+
+
+
+    public void insertEnseignantTestService(){
         Department dp = new Department("ing");
 
 //deux instance mo5talfin
@@ -92,7 +128,5 @@ public class EnseignantController {
         enseignantMatiereRepository.save(es);
         enseignantMatiereRepository.save(es2);
         enseignantMatiereRepository.save(ess);
-
-
     }
 }

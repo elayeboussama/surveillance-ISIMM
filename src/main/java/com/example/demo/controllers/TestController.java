@@ -30,6 +30,8 @@ public class TestController {
 
     @PostMapping(path="/all")
     public @ResponseBody void findAllEnsignant() {
+
+        System.out.println("test controllers");
 /*
 
         Department departement = new Department("Informatique");
